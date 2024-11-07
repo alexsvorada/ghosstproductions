@@ -5,6 +5,8 @@
 	interface Props {
 		channelName: string
 		channelId: string
+		started: string
+		ended: string
 	}
 
 	interface Statistics {
@@ -43,8 +45,10 @@
 
 <template>
 	<div class="flex flex-col items-center gap-6">
-		<h2 class="text-4xl font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text pb-1">
-			{{ props.channelName }}
+		<h2
+			class="text-4xl font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text pb-1 flex justify-between w-full">
+			<p>{{ props.channelName }}</p>
+			<p>{{ props.started }} - {{ props.ended }}</p>
 		</h2>
 
 		<div v-if="error" class="text-red-500">
@@ -53,8 +57,8 @@
 
 		<div class="flex flex-wrap gap-4 justify-center">
 			<StatCard v-if="statistics" title="Videos" :stat="Number(statistics.videoCount) || 0" />
-			<StatCard v-if="statistics" title="Subscribers" :stat="Number(statistics.subscriberCount) || 0" />
 			<StatCard v-if="statistics" title="Views" :stat="Number(statistics.viewCount) || 0" />
+			<StatCard v-if="statistics" title="Subscribers" :stat="Number(statistics.subscriberCount) || 0" />
 		</div>
 	</div>
 </template>

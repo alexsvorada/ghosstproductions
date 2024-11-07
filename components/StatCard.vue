@@ -9,7 +9,7 @@
 
 	const props = defineProps<Props>()
 	const count = ref(0)
-	const duration = 3
+	const duration = 1.5
 
 	onMounted(() => {
 		const increment = props.stat / ((duration * 1000) / 16)
@@ -25,10 +25,9 @@
 </script>
 
 <template>
-	<div
-		class="p-8 bg-black transition-colors duration-300 hover:bg-black/90 hover:cursor-default flex flex-col border-2 border-orange-500 rounded-xl">
+	<div class="p-8 transition-colors duration-300 hover:cursor-default flex flex-col border-2 border-orange-500 rounded-xl">
 		<h3 class="text-2xl font-bold mb-2 bg-gradient-to-r from-orange-500 to-red-500 inline-block text-transparent bg-clip-text">
-			{{ title }}
+			<p>{{ title }}</p>
 		</h3>
 		<p
 			class="text-5xl font-extrabold bg-gradient-to-bl from-orange-500 to-red-500 inline-block text-transparent bg-clip-text w-60">
