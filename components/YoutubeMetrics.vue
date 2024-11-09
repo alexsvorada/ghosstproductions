@@ -2,14 +2,14 @@
 	import { ref, onMounted } from 'vue'
 	import axios from 'axios'
 
-	interface Props {
-		channelName: string
-		channelId: string
-		started: string
-		ended: string
+	type Props = {
+		name: string
+		id: string
+		started: number
+		ended: number | 'Present'
 	}
 
-	interface Statistics {
+	type Statistics = {
 		subscriberCount?: number
 		viewCount?: number
 		videoCount?: number
@@ -22,7 +22,7 @@
 	const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY as string
 
 	const fetchChannelStats = async () => {
-		const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${props.channelId}&key=${API_KEY}`
+		const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${props.id}&key=${API_KEY}`
 
 		try {
 			const { data } = await axios.get(url)
@@ -46,8 +46,8 @@
 <template>
 	<div class="flex flex-col items-center gap-6">
 		<h2
-			class="text-4xl font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-transparent bg-clip-text pb-1 flex justify-between w-full">
-			<p>{{ props.channelName }}</p>
+			class="text-4xl font-extrabold bg-gradient-to-b from-orange-500 to-red-500 text-transparent bg-clip-text pb-1 flex justify-between w-full">
+			<p>{{ props.name }}</p>
 			<p>{{ props.started }} - {{ props.ended }}</p>
 		</h2>
 
