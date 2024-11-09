@@ -4,11 +4,8 @@
 
 html,
 body {
-	color: #fff;
-	overflow-x: hidden;
-	scroll-behavior: smooth;
 	font-family: 'Karla', sans-serif;
-	@apply text-gray-400 bg-gray-950;
+	@apply bg-gray-950 text-xl scroll-smooth overflow-x-hidden text-base text-gray-200;
 }
 
 body {
