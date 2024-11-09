@@ -1,20 +1,21 @@
 <script setup lang="ts">
-	interface Props {
+	type Props = {
 		quote: string
 		author: string
 	}
+
 	const props = defineProps<Props>()
 	const id = props.author.toLowerCase().replace(' ', '-')
 </script>
 
 <template>
-	<section :id="id" class="flex flex-col items-center">
-		<img :src="`/${id}.jpg`" :alt="'Face of ' + props.author" width="128px" class="rounded-full" />
-		<blockquote>
+	<div :id="id" class="flex flex-col items-center">
+		<img :src="`/${id}.jpg`" :alt="'Face of ' + props.author" width="256px" class="rounded-full" />
+		<blockquote class="italic font-thin tracking-wide max-w-prose">
 			<p>{{ props.quote }}</p>
 		</blockquote>
-		<cite>- {{ props.author }}</cite>
-	</section>
+		<cite class="font-bold">- {{ props.author }}</cite>
+	</div>
 </template>
 
 <style scoped></style>
